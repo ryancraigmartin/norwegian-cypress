@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    "cypress",
+    "prettier",
+    "chai-friendly"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2
+  },
+  "extends": [
+    "plugin:cypress/recommended",
+    "plugin:prettier/recommended",
+    "plugin:chai-friendly/recommended"
+  ],
+  "env": {
+    "cypress/globals": true
+  }
+}
