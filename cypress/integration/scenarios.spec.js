@@ -38,5 +38,36 @@ context("NCL Automation Scenarios 2 & 3", () => {
         .find(".btn-orange")
         .click();
     });
+
+    describe("Scenario 3: Guest filters shore excursions results using price range", () => {
+      it("should navigate to the Shore Excursions page and filter by price", () => {
+        // Makes the hidden dropdown visible and selects the Shore Excursions link from the Explore Dropdown
+        cy.get("[title='Explore'] + div").invoke(
+          "attr",
+          "style",
+          "visibility: visible;opacity: 1000;"
+        );
+
+        cy.get("a.linkItem[title='Shore Excursions']")
+          .should("exist")
+          .click();
+
+        // Clicks the Find an Excursion button.
+        cy.get(".col-sm-4 > .btn-cta").click();
+
+        // Clicks the mouse down on the right slider to begin dragging.
+        cy.get("#price-slider-values > span:nth-child(3)").trigger(
+          "mousedown",
+          {
+            which: 1
+          }
+        );
+
+        // Drags the right slider over to the left slider's position to filter the Excursions
+        cy.get("#price-slider-values > span:nth-child(2)")
+          .trigger("mousemove")
+          .trigger("mouseup", { force: true });
+      });
+    });
   });
 });
